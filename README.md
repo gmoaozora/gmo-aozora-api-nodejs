@@ -43,15 +43,15 @@ Add the configuration below into your config file
         "SALT": "PleaseDefineYourself"
     }
     ```
-    [ApiClient.js - Personal ](../client/personal/src/ApiClient.js) 
+    [ApiClient.js - Personal ](./client/personal/src/ApiClient.js) 
     ```js
         this.basePath = 'https://stg-api.gmo-aozora.com/ganb/api/personal/v1'.replace(/\/+$/, '');
     ```
-    [ApiClient.js - Corporate ](../client/corporate/src/ApiClient.js) 
+    [ApiClient.js - Corporate ](./client/corporate/src/ApiClient.js) 
     ```js
         this.basePath = 'https://stg-api.gmo-aozora.com/ganb/api/corporate/v1'.replace(/\/+$/, '');
     ```
-    [ApiClient.js - Webhook ](../client/webhook/src/ApiClient.js) 
+    [ApiClient.js - Webhook ](./client/webhook/src/ApiClient.js) 
     ```js
         this.basePath = 'https://stg-api.gmo-aozora.com/ganb/api/webhook/v1'.replace(/\/+$/, '');
     ```
@@ -68,15 +68,15 @@ Add the configuration below into your config file
         "SALT": "PleaseDefineYourself"
     }
     ```
-    [ApiClient.js - Personal ](../client/personal/src/ApiClient.js) 
+    [ApiClient.js - Personal ](./client/personal/src/ApiClient.js) 
     ```js
         this.basePath = 'https://api.gmo-aozora.com/ganb/api/personal/v1'.replace(/\/+$/, '');
     ```
-    [ApiClient.js - Corporate ](../client/corporate/src/ApiClient.js) 
+    [ApiClient.js - Corporate ](./client/corporate/src/ApiClient.js) 
     ```js
         this.basePath = 'https://api.gmo-aozora.com/ganb/api/corporate/v1'.replace(/\/+$/, '');
     ```
-    [ApiClient.js - Webhook ](../client/webhook/src/ApiClient.js) 
+    [ApiClient.js - Webhook ](./client/webhook/src/ApiClient.js) 
     ```js
         this.basePath = 'https://api.gmo-aozora.com/ganb/api/webhook/v1'.replace(/\/+$/, '');
     ```
