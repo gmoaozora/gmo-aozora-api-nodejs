@@ -163,37 +163,22 @@ module.exports = class GanbLib {
             }
         };
     }
-
-    async refreshSession(err, response, token, tryCounter = 0) {
-        console.log(`### refreshSession`);
-        const COUNTER_MAX_TRIES = 3;
-        let errData = null;
     
-        console.log(err.status, err.text);
-
-        if (err.text) {
-            errData = JSON.parse(err.text);
-        }
-
-        // error status 401 and code WG_ERR_105 : Unauthorized, need to use refresh token
-        if (!(err.status === 401 && (errData && errData['errorCode'] === 'WG_ERR_105'))) {
-            return false;
-        }
-
-        // Display error in console
-        console.log(`\n\nError status: ${err.status}, code: ${errData['errorCode']}`);
+    async refreshTokens(refreshToken, tryCounter = 0) {
+        console.log(`### refreshTokens`);
+        const COUNTER_MAX_TRIES = 3;
     
         console.log(`trying to refresh token. try #${tryCounter}`);
     
         if (tryCounter >= COUNTER_MAX_TRIES) {
-            throw error(`max counter reached, could not refresh token`);
+            throw new Error(`max counter reached, could not refresh token`);
         }
     
         const tokenURL = `${conf.AUTH_BASE_URL}${conf.TOKEN_PATH}`;
         const authHeader = authorizationHeader(this._clientID, this._clientSecret);
         const params = {
             grant_type: 'refresh_token',
-            refresh_token: token.refresh_token,
+            refresh_token: refreshToken,
             client_id: this._clientID,
             client_secret: this._clientSecret
         };
@@ -202,12 +187,11 @@ module.exports = class GanbLib {
             let result = await request.post(tokenURL)
                 .set('Content-Type', 'application/x-www-form-urlencoded')
                 .set('Authorization', authHeader)
-                .query(querystring.stringify(params));
+                .send(querystring.stringify(params));
             console.log(`REFRESH SESSION REQUEST RESULT`);
-            console.log(result.body);
             return result.body;
         } catch (err) {
-            return this.refreshSession(err, response, token, ++tryCounter);
+            return this.refreshTokens(refreshToken, ++tryCounter);
         }
     }
 
