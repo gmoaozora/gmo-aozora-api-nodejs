@@ -21,9 +21,15 @@ Node 10+
 ## Installation
 
 - clone the repository from *Github* **in your project folder**\
+  ```
+  git clone git@github.com:gmoaozora-sys/gmo-aozora-api-nodejs.git
+  ```
   https://github.com/gmoaozora/gmo-aozora-api-nodejs
 - With the **terminal**, go to the folder and run\
-  `npm install` 
+  ```
+  cd gmo-aozora-api-nodejs
+  npm install
+  ```
 
 ## Getting started
 
