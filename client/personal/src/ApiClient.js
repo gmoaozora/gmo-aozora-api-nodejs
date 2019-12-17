@@ -46,9 +46,9 @@
     /**
      * The base URL against which to resolve every API call's (relative) path.
      * @type {String}
-     * @default https://stg-api.gmo-aozora.com/ganb/stg-api/personal/v1
+     * @default https://stg-api.gmo-aozora.com/ganb/api/personal/v1
      */
-    this.basePath = 'https://stg-api.gmo-aozora.com/ganb/stg-api/personal/v1'.replace(/\/+$/, '');
+    this.basePath = 'https://stg-api.gmo-aozora.com/ganb/api/personal/v1'.replace(/\/+$/, '');
 
     /**
      * The authentication methods to be included for all API calls.

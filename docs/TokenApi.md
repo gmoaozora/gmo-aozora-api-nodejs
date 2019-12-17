@@ -1,48 +1,68 @@
 # TokenApi
 
-All URIs are relative to *https://api.gmo-aozora.com/ganb/api/auth/v1*
+All URIs are relative to *https://stg-api.gmo-aozora.com/ganb/api/auth/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**tokenUsingPOST**](TokenApi.md#tokenUsingPOST) | **POST** /token | アクセストークン発行
 
 
-<a name="tokenUsingPOST"></a>
-# **tokenUsingPOST**
-> TokenResponse tokenUsingPOST(contentType, body, authorization)
+# **getToken**
+> TokenResponse getToken(code, authMethod, redirectUri)
 
-アクセストークン発行
+### アクセストークン発行
 
-認可エンドポイントで取得した認可コードを用いたアクセストークンの取得及びリフレッシュトークンを用いたアクセストークンの更 新を行うためのエンドポイント
+認可エンドポイントで取得した認可コードを用いたアクセストークンの取得及びリフレッシュトークンを用いたアクセストークンの更新を行うためのエンドポイント
 
 ### Example
-```java
-// Import classes:
-//import common.ApiException;
-//import auth.TokenApi;
 
+#### get new token
+```javascript
+let GanbLib = require('./gmo-aozora-api-nodejs/index.js');
 
-TokenApi apiInstance = new TokenApi();
-String contentType = "contentType_example"; // String | application/x-www-form-urlencodedに固定
-TokenRequest body = new TokenRequest(); // TokenRequest | HTTPリクエストボディ
-String authorization = "authorization_example"; // String | クライアント認証用のBasic認証値。 (クライアントIDとクライアントシーレットを:(コロン)で連結し、Base64エンコードしたものを設定。) 事前に登録する「クライアント認証方式」にclient_secret_basic(ベーシック認証)を設定した場合、必須。 「クライアント認証方式」にclient_secret_post(パラメーター認証)を設定した場合、設定不要。
-try {
-    TokenResponse result = apiInstance.tokenUsingPOST(contentType, body, authorization);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TokenApi#tokenUsingPOST");
-    e.printStackTrace();
+let saveCallback = function(nonce){
+    // implement your function
 }
+
+let checkCallback = function(nonce){
+    // implement your function
+}
+
+let ganbLib = new GanbLib({clientID: "clientID_example", clientSecret: "clientSecret_example", nonceCallbacks: [saveCallback, checkCallback]});
+let redirectUri = "redirectUri_example";
+let params = {code: 'code_example', authMethod: 'basic', redirect_uri: redirectUri};
+ganbLib.oAuth.getToken(params).then((result) => {
+  console.log(result);
+});
+```
+
+#### refresh token
+```javascript
+let GanbLib = require('./gmo-aozora-api-nodejs/index.js');
+
+let saveCallback = function(nonce){
+    // implement your function
+}
+
+let checkCallback = function(nonce){
+    // implement your function
+}
+
+let ganbLib = new GanbLib({clientID: "clientID_example", clientSecret: "clientSecret_example", nonceCallbacks: [saveCallback, checkCallback]});
+const refreshToken = "refresh token_example";
+ganbLib.refreshTokens(refreshToken).then((result) => {
+  console.log(result);
+});
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contentType** | **String**| application/x-www-form-urlencodedに固定 |
- **body** | [**TokenRequest**](TokenRequest.md)| HTTPリクエストボディ |
- **authorization** | **String**| クライアント認証用のBasic認証値。 (クライアントIDとクライアントシーレットを:(コロン)で連結し、Base64エンコードしたものを設定。) 事前に登録する「クライアント認証方式」にclient_secret_basic(ベーシック認証)を設定した場合、必須。 「クライアント認証方式」にclient_secret_post(パラメーター認証)を設定した場合、設定不要。 | [optional]
-
+ **code** | **String** | 新規発行時のみ必須 認可エンドポイントにて当社から返却した認可コード minLength: 1 maxLength: 128 |
+ **authMethod** | **String** | 事前に登録したクライアント認証方式。ベーシック認証: 「basic」、クライアントシークレット認証: 「post」 |
+ **redirectUri** | **String** | 貴社が指定する認可コードをリダイレクトするためのURI  minLength: 1 maxLength: 256  |
+ 
 ### Return type
 
 [**TokenResponse**](TokenResponse.md)
@@ -55,4 +75,3 @@ No authorization required
 
  - **Content-Type**: application/json;charset=UTF-8
  - **Accept**: application/json;charset=UTF-8
-
