@@ -1,0 +1,14 @@
+# GmoAozoraNetBankOpenApi.VisaTransaction
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**useDate** | **String** | 利用日 半角文字 YYYY-MM-DD形式 | [optional] 
+**useContent** | **String** | 利用金額 半角数字 マイナス含む 円貨金額 | [optional] 
+**amount** | **String** | 利用金額 半角数字 マイナス含む 円貨金額 | [optional] 
+**localCurrencyAmount** | **String** | 現地通貨金額 半角数字 小数部最大6桁、マイナス含む 国内利用の場合は項目自体を設定しない | [optional] 
+**conversionRate** | **String** | 円換算レート 半角数字 小数部最大6桁、マイナス含む 国内利用の場合は項目自体を設定しない |[optional]  
+**approvalNumber** | **String** | 承認番号 半角数  | [optional] 
+**visaStatus** | **String** | ステータス {String} 半角数字 1&#x3D;確定 2&#x3D;未確定 3&#x3D;取消済 | [optional] 
+**currencyCodeATM** | **String** | 通貨コード 半角文字 ISO4217準拠した通貨コード | [optional] 
+**atmCommission** | **String** | 手数料 {String} 半角数字　小数部最大6桁、マイナス含む　現地通貨金額でのATM手数料　国内利用の場合または、ATM手数料が発生していない場合は項目自体を設定しない | [optional] 

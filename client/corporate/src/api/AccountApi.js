@@ -13,22 +13,24 @@
  *
  */
 
+
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AccountsResponse', 'model/BalancesResponse', 'model/DepositTransactionsResponse', 'model/ErrorResponse', 'model/TransactionsResponse'], factory);
+    define(['ApiClient', 'model/AccountsResponse', 'model/BalancesResponse', 'model/DepositTransactionsResponse', 'model/ErrorResponse', 'model/TransactionsResponse', 'model/VisaTransactionsResponse'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AccountsResponse'), require('../model/BalancesResponse'), require('../model/DepositTransactionsResponse'), require('../model/ErrorResponse'), require('../model/TransactionsResponse'));
+    module.exports = factory(require('../ApiClient'), require('../model/AccountsResponse'), require('../model/BalancesResponse'), require('../model/DepositTransactionsResponse'), require('../model/VisaTransactionsResponse'), require('../model/ErrorResponse'), require('../model/TransactionsResponse'));
   } else {
     // Browser globals (root is window)
     if (!root.GmoAozoraNetBankOpenApi) {
       root.GmoAozoraNetBankOpenApi = {};
     }
-    root.GmoAozoraNetBankOpenApi.AccountApi = factory(root.GmoAozoraNetBankOpenApi.ApiClient, root.GmoAozoraNetBankOpenApi.AccountsResponse, root.GmoAozoraNetBankOpenApi.BalancesResponse, root.GmoAozoraNetBankOpenApi.DepositTransactionsResponse, root.GmoAozoraNetBankOpenApi.ErrorResponse, root.GmoAozoraNetBankOpenApi.TransactionsResponse);
+    root.GmoAozoraNetBankOpenApi.AccountApi = factory(root.GmoAozoraNetBankOpenApi.ApiClient, root.GmoAozoraNetBankOpenApi.AccountsResponse, root.GmoAozoraNetBankOpenApi.BalancesResponse, root.GmoAozoraNetBankOpenApi.DepositTransactionsResponse, root.GmoAozoraNetBankOpenApi.ErrorResponse, root.GmoAozoraNetBankOpenApi.TransactionsResponse, root.GmoAozoraNetBankOpenApi.VisaTransactionsResponse);
   }
-}(this, function(ApiClient, AccountsResponse, BalancesResponse, DepositTransactionsResponse, ErrorResponse, TransactionsResponse) {
+}(this, function(ApiClient, AccountsResponse, BalancesResponse, DepositTransactionsResponse, ErrorResponse, TransactionsResponse, VisaTransactionsResponse) {
   'use strict';
+
 
   /**
    * Account service.
@@ -272,6 +274,61 @@
         authNames, contentTypes, accepts, returnType, callback
       );
     }
+
+    /**
+     * Visaデビット取引明細照会
+     * &lt;p&gt;指定した円普通預金口座の入出金明細情報を照会します&lt;/p&gt; &lt;p&gt;なお、つかいわけ口座も円普通預金口座の入出金明細を照会可能とし&lt;/p&gt; &lt;p&gt;つかいわけ口座の口座IDが指定された場合で、紐付く入出金明細が存在しない場合は空のリストを返却します&lt;/p&gt; &lt;h4 style&#x3D;&#39;margin-top:30px; border-left: solid 4px #1B2F48; padding: 0.1em 0.5em; color:#1B2F48;&#39;&gt;詳細説明&lt;/h4&gt; &lt;div style&#x3D;&#39;margin:10px;&#39;&gt;   &lt;p style&#x3D;&#39;font-weight:bold; color:#616161;&#39;&gt;対象科目&lt;/p&gt;   &lt;p style&#x3D;&#39;padding-left:20px;&#39;&gt;円普通預金口座&lt;/p&gt; &lt;/div&gt; &lt;div style&#x3D;&#39;margin:10px;&#39;&gt;   &lt;p style&#x3D;&#39;font-weight:bold; color:#616161;&#39;&gt;取得上限件数&lt;/p&gt;   &lt;p style&#x3D;&#39;padding-left:20px;&#39;&gt;500件&lt;/p&gt;   &lt;p style&#x3D;&#39;padding-left:20px;&#39;&gt;取得できる明細数が500に満たないときは取得できる明細のみを返却します&lt;/p&gt;   &lt;p style&#x3D;&#39;padding-left:20px;&#39;&gt;取得できる明細が存在しない場合は「200：OK」とし明細を返却しません&lt;/p&gt; &lt;/div&gt; &lt;div style&#x3D;&#39;margin:10px;&#39;&gt;   &lt;p style&#x3D;&#39;font-weight:bold; color:#616161;&#39;&gt;ページング&lt;/p&gt;   &lt;p style&#x3D;&#39;padding-left:20px;&#39;&gt;2ページ目以降を照会する際は、初回と同じリクエスト内容に、初回レスポンスの次明細キーを追加してリクエストしてください&lt;/p&gt; &lt;/div&gt; &lt;div style&#x3D;&#39;margin:10px;&#39;&gt;   &lt;p style&#x3D;&#39;font-weight:bold; color:#616161;&#39;&gt;ソート順&lt;/p&gt;   &lt;p style&#x3D;&#39;padding-left:20px;&#39;&gt;取引の昇順&lt;/p&gt; &lt;/div&gt; &lt;div style&#x3D;&#39;width:600px; margin:10px;&#39;&gt;   &lt;p style&#x3D;&#39;font-weight:bold; color:#616161;&#39;&gt;対象期間&lt;/p&gt;   &lt;div style&#x3D;&#39;display:table; margin-left:20px; background-color:#29659b;&#39;&gt;     &lt;div style&#x3D;&#39;display:table-cell; width:160px; padding:9px; border:1px solid #fff; color:#fff;&#39;&gt;日本語名&lt;/div&gt;     &lt;div style&#x3D;&#39;display:table-cell; width:80px; padding:9px; border:1px solid #fff; text-align:center; font-size:120%; color:#fff;&#39;&gt;&amp;#9312;&lt;/div&gt;     &lt;div style&#x3D;&#39;display:table-cell; width:80px; padding:9px; border:1px solid #fff; text-align:center; font-size:120%; color:#fff;&#39;&gt;&amp;#9313;&lt;/div&gt;     &lt;div style&#x3D;&#39;display:table-cell; width:80px; padding:9px; border:1px solid #fff; text-align:center; font-size:120%; color:#fff;&#39;&gt;&amp;#9314;&lt;/div&gt;     &lt;div style&#x3D;&#39;display:table-cell; width:80px; padding:9px; border:1px solid #fff; text-align:center; font-size:120%; color:#fff;&#39;&gt;&amp;#9315;&lt;/div&gt;   &lt;/div&gt;   &lt;div style&#x3D;&#39;display:table; margin-left:20px;&#39;&gt;     &lt;div style&#x3D;&#39;display:table-cell; width:160px; padding:9px; border:1px solid #fff; color:#fff; background-color:#29659b;&#39;&gt;対象期間From&lt;/div&gt;     &lt;div style&#x3D;&#39;display:table-cell; width:80px; padding:9px; border:1px solid #fff; background-color:#f8f8f8; font-size:120%; text-align:center;&#39;&gt;×&lt;/div&gt;     &lt;div style&#x3D;&#39;display:table-cell; width:80px; padding:9px; border:1px solid #fff; background-color:#f8f8f8; font-size:120%; text-align:center;&#39;&gt;○&lt;/div&gt;     &lt;div style&#x3D;&#39;display:table-cell; width:80px; padding:9px; border:1px solid #fff; background-color:#f8f8f8; font-size:120%; text-align:center;&#39;&gt;×&lt;/div&gt;     &lt;div style&#x3D;&#39;display:table-cell; width:80px; padding:9px; border:1px solid #fff; background-color:#f8f8f8; font-size:120%; text-align:center;&#39;&gt;○&lt;/div&gt;   &lt;/div&gt;   &lt;div style&#x3D;&#39;display:table; margin-left:20px;&#39;&gt;     &lt;div style&#x3D;&#39;display:table-cell; width:160px; padding:9px; border:1px solid #fff; color:#fff; background-color:#29659b;&#39;&gt;対象期間To&lt;/div&gt;     &lt;div style&#x3D;&#39;display:table-cell; width:80px; padding:9px; border:1px solid #fff; background-color:#f8f8f8; font-size:120%; text-align:center;&#39;&gt;×&lt;/div&gt;     &lt;div style&#x3D;&#39;display:table-cell; width:80px; padding:9px; border:1px solid #fff; background-color:#f8f8f8; font-size:120%; text-align:center;&#39;&gt;×&lt;/div&gt;     &lt;div style&#x3D;&#39;display:table-cell; width:80px; padding:9px; border:1px solid #fff; background-color:#f8f8f8; font-size:120%; text-align:center;&#39;&gt;○&lt;/div&gt;     &lt;div style&#x3D;&#39;display:table-cell; width:80px; padding:9px; border:1px solid #fff; background-color:#f8f8f8; font-size:120%; text-align:center;&#39;&gt;○&lt;/div&gt;   &lt;/div&gt; &lt;/div&gt; &lt;div style&#x3D;&#39;margin:10px;&#39;&gt;   &lt;ul&gt;     &lt;li style&#x3D;&#39;list-style-type:none;&#39;&gt;&amp;#9312;の場合　当日分の入出金明細を返却&lt;/li&gt;     &lt;li style&#x3D;&#39;list-style-type:none;&#39;&gt;&amp;#9313;の場合　対象期間From　～　当日までの入出金明細を返却&lt;/li&gt;     &lt;li style&#x3D;&#39;list-style-type:none;&#39;&gt;&amp;#9314;の場合　取引初回　～　対象期間Toまでの入出金明細を返却&lt;/li&gt;     &lt;li style&#x3D;&#39;list-style-type:none;&#39;&gt;&amp;#9315;の場合　対象期間From　～　対象期間Toまでの入出金明細を返却&lt;/li&gt;   &lt;/ul&gt; &lt;/div&gt; &lt;div style&#x3D;&#39;margin-bottom:40px;&#39; /&gt; 
+     * @param {String} accountId 口座ID 半角英数字 口座を識別するIDまたは、つかいわけ口座を識別するID  科目コードが以下の場合のみ受け付けます ・01&#x3D;普通預金（有利息） ・02&#x3D;普通預金（決済用）  minLength: 12 maxLength: 29 
+     * @param {String} xAccessToken アクセストークン  minLength: 1 maxLength: 128            
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.dateFrom 対象期間From 半角文字 YYYY-MM-DD形式  minLength: 10 maxLength: 10 
+     * @param {String} opts.dateTo 対象期間To 半角文字 YYYY-MM-DD形式 対象期間Fromと対象期間Toを指定する場合は、対象期間From≦対象期間Toとし、それ以外は「400 Bad Request」を返却  minLength: 10 maxLength: 10 
+     * @param {String} opts.nextItemKey 次明細キー 半角数字 初回要求時は未設定 初回応答で次明細キーが「true」の場合、返却された同項目を2回目以降に設定  minLength: 1 maxLength: 24 
+     * @param {module:api/AccountApi~transactionsUsingGETCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/TransactionsResponse}
+     */
+    this.visaTransactionsUsingGET = function(accountId, xAccessToken, opts, callback) {
+      opts = opts || {};
+      var postBody = null;      
+      
+      // verify the required parameter 'accountId' is set
+      if (accountId === undefined || accountId === null) {
+        throw new Error("Missing the required parameter 'accountId' when calling visaTransactionsUsingGET");
+      }
+
+      // verify the required parameter 'xAccessToken' is set
+      if (xAccessToken === undefined || xAccessToken === null) {
+        throw new Error("Missing the required parameter 'xAccessToken' when calling visaTransactionsUsingGET");
+      }
+    
+      var pathParams = {
+      };
+      var queryParams = {
+        'accountId': accountId,
+        'dateFrom': opts['dateFrom'],
+        'dateTo': opts['dateTo'],
+        'nextItemKey': opts['nextItemKey'],
+      };    
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+        'x-access-token': xAccessToken
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json;charset=UTF-8'];
+      var accepts = ['application/json;charset=UTF-8'];
+      var returnType = VisaTransactionsResponse;
+
+      return this.apiClient.callApi(
+        '/accounts/visa-transactions', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );      
+    }
+
   };
 
   return exports;

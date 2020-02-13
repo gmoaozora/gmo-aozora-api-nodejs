@@ -90,6 +90,16 @@
         done();
       });
     });
+    describe('visaTransactionsUsingGET', function() {
+      it('should call visaTransactionsUsingGET successfully', function(done) {
+        //uncomment below and update the code to test visaTransactionsUsingGET
+        //instance.visaTransactionsUsingGET(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });    
   });
 
 }));
