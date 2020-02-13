@@ -30,7 +30,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new GmoAozoraNetBankOpenApi.AccountApi();
+    instance = new GmoAozoraNetBankOpenApi.VisaTransaction();
   });
 
   var getProperty = function(object, getter, property) {
@@ -49,57 +49,13 @@
       object[property] = value;
   }
 
-  describe('AccountApi', function() {
-    describe('accountsDepositTransactionsUsingGET', function() {
-      it('should call accountsDepositTransactionsUsingGET successfully', function(done) {
-        //uncomment below and update the code to test accountsDepositTransactionsUsingGET
-        //instance.accountsDepositTransactionsUsingGET(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+  describe('VisaTransaction', function() {
+    it('should create an instance of VisaTransaction', function() {
+      // uncomment below and update the code to test VisaTransaction
+      //var instance = new GmoAozoraNetBankOpenApi.VisaTransaction();
+      //expect(instance).to.be.a(GmoAozoraNetBankOpenApi.VisaTransaction);
     });
-    describe('accountsUsingGET', function() {
-      it('should call accountsUsingGET successfully', function(done) {
-        //uncomment below and update the code to test accountsUsingGET
-        //instance.accountsUsingGET(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('balancesUsingGET', function() {
-      it('should call balancesUsingGET successfully', function(done) {
-        //uncomment below and update the code to test balancesUsingGET
-        //instance.balancesUsingGET(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('transactionsUsingGET', function() {
-      it('should call transactionsUsingGET successfully', function(done) {
-        //uncomment below and update the code to test transactionsUsingGET
-        //instance.transactionsUsingGET(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('visaTransactionsUsingGET', function() {
-      it('should call visaTransactionsUsingGET successfully', function(done) {
-        //uncomment below and update the code to test visaTransactionsUsingGET
-        //instance.visaTransactionsUsingGET(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
+
   });
 
 }));

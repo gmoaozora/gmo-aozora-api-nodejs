@@ -15,91 +15,130 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', '../../src/index'], factory);
+    // AMD. Register as an anonymous module.
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('../../src/index'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.GmoAozoraNetBankOpenApi);
+    if (!root.GmoAozoraNetBankOpenApi) {
+      root.GmoAozoraNetBankOpenApi = {};
+    }
+    root.GmoAozoraNetBankOpenApi.VisaTransaction = factory(root.GmoAozoraNetBankOpenApi.ApiClient);
   }
-}(this, function(expect, GmoAozoraNetBankOpenApi) {
+}(this, function(ApiClient) {
   'use strict';
 
-  var instance;
 
-  beforeEach(function() {
-    instance = new GmoAozoraNetBankOpenApi.AccountApi();
-  });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
+
+  /**
+   * The VisaTransaction model module.
+   * @module model/VisaTransaction
+   * @version 1.1.12
+   */
+
+  /**
+   * Constructs a new <code>VisaTransaction</code>.
+   * @alias module:model/VisaTransaction
+   * @class
+   */
+  var exports = function() {
+    var _this = this;
+
+  };
+
+  /**
+   * Constructs a <code>Transaction</code> from a plain JavaScript object, optionally creating a new instance.
+   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+   * @param {Object} data The plain JavaScript object bearing properties of interest.
+   * @param {module:model/Transaction} obj Optional instance to populate.
+   * @return {module:model/Transaction} The populated <code>Transaction</code> instance.
+   */
+  exports.constructFromObject = function(data, obj) {
+    if (data) {
+      obj = obj || new exports();
+
+      if (data.hasOwnProperty('useDate')) {
+        obj['useDate'] = ApiClient.convertToType(data['useDate'], 'String');
+      }
+      if (data.hasOwnProperty('useContent')) {
+        obj['useContent'] = ApiClient.convertToType(data['useContent'], 'String');
+      }
+      if (data.hasOwnProperty('amount')) {
+        obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
+      }
+      if (data.hasOwnProperty('localCurrencyAmount')) {
+        obj['localCurrencyAmount'] = ApiClient.convertToType(data['localCurrencyAmount'], 'String');
+      }
+      if (data.hasOwnProperty('conversionRate')) {
+        obj['conversionRate'] = ApiClient.convertToType(data['conversionRate'], 'String');
+      }
+      if (data.hasOwnProperty('approvalNumber')) {
+        obj['approvalNumber'] = ApiClient.convertToType(data['approvalNumber'], 'String');
+      }
+      if (data.hasOwnProperty('visaStatus')) {
+        obj['visaStatus'] = ApiClient.convertToType(data['visaStatus'], 'String');
+      }
+      if (data.hasOwnProperty('currencyCodeATM')) {
+        obj['currencyCodeATM'] = ApiClient.convertToType(data['currencyCodeATM'], 'String');
+      }
+      if (data.hasOwnProperty('atmCommission')) {
+        obj['atmCommission'] = ApiClient.convertToType(data['atmCommission'], 'String');
+      }
+
+    }
+    return obj;
   }
 
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
-
-  describe('AccountApi', function() {
-    describe('accountsDepositTransactionsUsingGET', function() {
-      it('should call accountsDepositTransactionsUsingGET successfully', function(done) {
-        //uncomment below and update the code to test accountsDepositTransactionsUsingGET
-        //instance.accountsDepositTransactionsUsingGET(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('accountsUsingGET', function() {
-      it('should call accountsUsingGET successfully', function(done) {
-        //uncomment below and update the code to test accountsUsingGET
-        //instance.accountsUsingGET(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('balancesUsingGET', function() {
-      it('should call balancesUsingGET successfully', function(done) {
-        //uncomment below and update the code to test balancesUsingGET
-        //instance.balancesUsingGET(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('transactionsUsingGET', function() {
-      it('should call transactionsUsingGET successfully', function(done) {
-        //uncomment below and update the code to test transactionsUsingGET
-        //instance.transactionsUsingGET(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('visaTransactionsUsingGET', function() {
-      it('should call visaTransactionsUsingGET successfully', function(done) {
-        //uncomment below and update the code to test visaTransactionsUsingGET
-        //instance.visaTransactionsUsingGET(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-  });
+  /**
+   * 利用日 半角文字 YYYY-MM-DD形式
+   * @member {String} useDate
+   */
+  exports.prototype['useDate'] = undefined;
+  /**
+   * 利用内容　全半角文字 
+   * @member {String} useContent
+   */
+  exports.prototype['useContent'] = undefined;
+  /**
+   * 利用金額　半角数字　マイナス含む　円貨金額
+   * @member {String} amount
+   */
+  exports.prototype['amount'] = undefined;
+  /**
+   * 現地通貨金額　半角数字　小数部最大6桁、マイナス含む　国内利用の場合は項目自体を設定しない 
+   * @member {String} localCurrencyAmount
+   */
+  exports.prototype['localCurrencyAmount'] = undefined;
+  /**
+   * 円換算レート　半角数字　小数部最大6桁、マイナス含む　国内利用の場合は項目自体を設定しない 
+   * @member {String} conversionRate
+   */
+  exports.prototype['conversionRate'] = undefined;
+  /**
+   * 承認番号 半角数字
+   * @member {String} approvalNumber
+   */
+  exports.prototype['approvalNumber'] = undefined;
+  /**
+   * ステータス {String} 半角数字　・1=確定　・2=未確定　・3=取消済
+   * @member {String} visaStatus
+   */
+  exports.prototype['visaStatus'] = undefined;
+  /**
+   * 通貨コード {String} 半角文字　ISO4217準拠した通貨コード 
+   * @member {String} currencyCodeATM
+   */
+  exports.prototype['currencyCodeATM'] = undefined;
+  /**
+   * 手数料 {String} 半角数字　小数部最大6桁、マイナス含む　現地通貨金額でのATM手数料　国内利用の場合または、ATM手数料が発生していない場合は項目自体を設定しない
+   * @member {String} atmCommission
+   */
+  exports.prototype['atmCommission'] = undefined;
+  return exports;
 
 }));
+
+

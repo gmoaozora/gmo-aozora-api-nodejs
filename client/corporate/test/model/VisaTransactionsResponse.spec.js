@@ -30,7 +30,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new GmoAozoraNetBankOpenApi.AccountApi();
+    instance = new GmoAozoraNetBankOpenApi.VisaTransactionsResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -49,57 +49,73 @@
       object[property] = value;
   }
 
-  describe('AccountApi', function() {
-    describe('accountsDepositTransactionsUsingGET', function() {
-      it('should call accountsDepositTransactionsUsingGET successfully', function(done) {
-        //uncomment below and update the code to test accountsDepositTransactionsUsingGET
-        //instance.accountsDepositTransactionsUsingGET(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+  describe('DepositTransactionsResponse', function() {
+    it('should create an instance of VisaTransactionsResponse', function() {
+      // uncomment below and update the code to test DepositTransactionsResponse
+      //var instance = new GmoAozoraNetBankOpenApi.DepositTransactionsResponse();
+      //expect(instance).to.be.a(GmoAozoraNetBankOpenApi.DepositTransactionsResponse);
     });
-    describe('accountsUsingGET', function() {
-      it('should call accountsUsingGET successfully', function(done) {
-        //uncomment below and update the code to test accountsUsingGET
-        //instance.accountsUsingGET(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property useDate (base name: "useDate")', function() {
+      // uncomment below and update the code to test the property useDate
+      //var instance = new GmoAozoraNetBankOpenApi.DepositTransactionsResponse();
+      //expect(instance).to.be();
     });
-    describe('balancesUsingGET', function() {
-      it('should call balancesUsingGET successfully', function(done) {
-        //uncomment below and update the code to test balancesUsingGET
-        //instance.balancesUsingGET(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property useContent (base name: "useContent")', function() {
+      // uncomment below and update the code to test the property useContent
+      //var instance = new GmoAozoraNetBankOpenApi.DepositTransactionsResponse();
+      //expect(instance).to.be();
     });
-    describe('transactionsUsingGET', function() {
-      it('should call transactionsUsingGET successfully', function(done) {
-        //uncomment below and update the code to test transactionsUsingGET
-        //instance.transactionsUsingGET(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property amount (base name: "amount")', function() {
+      // uncomment below and update the code to test the property amount
+      //var instance = new GmoAozoraNetBankOpenApi.DepositTransactionsResponse();
+      //expect(instance).to.be();
     });
-    describe('visaTransactionsUsingGET', function() {
-      it('should call visaTransactionsUsingGET successfully', function(done) {
-        //uncomment below and update the code to test visaTransactionsUsingGET
-        //instance.visaTransactionsUsingGET(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    it('should have the property baseDate (base name: "baseDate")', function() {
+      // uncomment below and update the code to test the property baseDate
+      //var instance = new GmoAozoraNetBankOpenApi.DepositTransactionsResponse();
+      //expect(instance).to.be();
     });
+
+    it('should have the property localCurrencyAmount (base name: "localCurrencyAmount")', function() {
+      // uncomment below and update the code to test the property localCurrencyAmount
+      //var instance = new GmoAozoraNetBankOpenApi.DepositTransactionsResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property conversionRate (base name: "conversionRate")', function() {
+      // uncomment below and update the code to test the property conversionRate
+      //var instance = new GmoAozoraNetBankOpenApi.DepositTransactionsResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property approvalNumber (base name: "approvalNumber")', function() {
+      // uncomment below and update the code to test the property approvalNumber
+      //var instance = new GmoAozoraNetBankOpenApi.DepositTransactionsResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property visaStatus (base name: "visaStatus")', function() {
+      // uncomment below and update the code to test the property visaStatus
+      //var instance = new GmoAozoraNetBankOpenApi.DepositTransactionsResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property currencyCodeATM (base name: "currencyCodeATM")', function() {
+      // uncomment below and update the code to test the property currencyCodeATM
+      //var instance = new GmoAozoraNetBankOpenApi.DepositTransactionsResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property atmCommission (base name: "atmCommission")', function() {
+      // uncomment below and update the code to test the property atmCommission
+      //var instance = new GmoAozoraNetBankOpenApi.DepositTransactionsResponse();
+      //expect(instance).to.be();
+    });
+    
   });
 
 }));
