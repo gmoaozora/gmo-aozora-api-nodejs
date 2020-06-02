@@ -20,7 +20,7 @@
     define(['ApiClient', 'model/AccountsResponse', 'model/BalancesResponse', 'model/DepositTransactionsResponse', 'model/ErrorResponse', 'model/TransactionsResponse', 'model/VisaTransactionsResponse'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AccountsResponse'), require('../model/BalancesResponse'), require('../model/DepositTransactionsResponse'), require('../model/VisaTransactionsResponse'), require('../model/ErrorResponse'), require('../model/TransactionsResponse'));
+    module.exports = factory(require('../ApiClient'), require('../model/AccountsResponse'), require('../model/BalancesResponse'), require('../model/DepositTransactionsResponse'), require('../model/ErrorResponse'), require('../model/TransactionsResponse'), require('../model/VisaTransactionsResponse'));
   } else {
     // Browser globals (root is window)
     if (!root.GmoAozoraNetBankOpenApi) {
