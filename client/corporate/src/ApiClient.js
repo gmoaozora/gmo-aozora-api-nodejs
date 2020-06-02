@@ -478,7 +478,7 @@
         var data = null;
         if (!error) {
           try {
-            data = _this.deserialize(response, returnType);
+            data = _this.deserialize(response, typeof returnType);
             if (_this.enableCookies && typeof window === 'undefined'){
               _this.agent.saveCookies(response);
             }
